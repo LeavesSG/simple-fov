@@ -1,14 +1,14 @@
 public class Direction {
-    double x, y, z;
+    double A, B, C;
 
     Direction(double x0, double y0, double z0) {
-        x = x0;
-        y = y0;
-        z = z0;
+        A = x0;
+        B = y0;
+        C = z0;
     }
 
     String Print() {
-        return "Vector(" + x + ',' + y + ',' + z + ')';
+        return "Vector(" + A + ',' + B + ',' + C + ')';
     }
 
     public static void main(String[] args) {

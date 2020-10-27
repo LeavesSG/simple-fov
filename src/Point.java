@@ -19,7 +19,12 @@ public class Point {
         return x == point2.x && y == point2.y && z == point2.z;
     }
 
+    public Edge lightRoute(Camera camera) {
+        return new Edge(this, Camera.center);
+    }
+
     public static void main(String[] args) {
         System.out.print(new Point(0, 0, 0).distanceBetween(new Point(1, 1, 1)));
     }
+    
 }
