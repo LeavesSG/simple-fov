@@ -1,11 +1,11 @@
 public class Plane {
     public Point point;
-    public Direction dirVector;
+    public Direction normalVector;
 
-    Plane(Point Point, Direction DirVector) {
+    Plane(Point Point, Direction NormalVector) {
         point = Point;
-        dirVector = DirVector;
+        normalVector = NormalVector;
     }
-    
+
 
 }

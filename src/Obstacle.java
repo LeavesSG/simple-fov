@@ -4,6 +4,7 @@ public class Obstacle {
     public Surface[] surfaces;
     public Edge[] edges = {};
     public Point[] points = {};
+    public Point[] positions;
 
     Obstacle(Surface[] surfaceList) {
         surfaces = surfaceList;
@@ -45,10 +46,17 @@ public class Obstacle {
         return points;
     }
 
+    public Point[] rendorOnScreen(Camera camera) {
+        for (int i = 0; i < points.length; i++) {
+            positions[i] = points[i].positionOnScreen(camera);
+        }
+        return positions;
+    }
+
     public static void main(String[] args) {
         Surface s1 = new Surface(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
-        Surface[] slist = {s1};
-        Obstacle o1 = new Obstacle(slist);
+        Surface[] surfaces = {s1};
+        Obstacle o1 = new Obstacle(surfaces);
         System.out.print(Arrays.toString(o1.getPoints()));
 
     }

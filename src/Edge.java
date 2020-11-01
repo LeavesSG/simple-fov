@@ -1,9 +1,11 @@
 public class Edge {
     Point point1, point2;
+    Direction direction;
 
     Edge(Point point_1, Point point_2) {
         point1 = point_1;
         point2 = point_2;
+        direction = new Direction(point_2.x - point_1.x, point_2.y - point_1.y, point_2.z - point_1.z);
     }
 
     public Direction getDirVector() {
@@ -13,6 +15,11 @@ public class Edge {
     public Point getMiddlePoint() {
         return new Point((point2.x + point1.x) / 2, (point2.y + point1.y) / 2, (point2.z + point1.z) / 2);
     }
+
+    public Point intersectWithPlane(Plane plane) {
+        return null;
+    }
+
 
     public static void main(String[] args) {
         Point point1 = new Point(0, 0, 0);

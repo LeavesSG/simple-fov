@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Session {
     public static Obstacle[] obstacles;
     public static Camera camera;
@@ -15,6 +17,14 @@ public class Session {
     }
 
     public static void loop() {
+
+    }
+
+    public static void addObstacle(Obstacle obs) {
+        int N = obstacles.length;
+        Obstacle[] newList = Arrays.copyOf(obstacles, N + 1);
+        newList[N] = obs;
+        obstacles = newList;
         
     }
 

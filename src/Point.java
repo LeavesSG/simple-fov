@@ -19,12 +19,26 @@ public class Point {
         return x == point2.x && y == point2.y && z == point2.z;
     }
 
-    public Edge lightRoute(Camera camera) {
-        return new Edge(this, Camera.center);
+    public double distanceToLine(Line line) {
+        return 0.0;
+    }
+
+    public Point moveTo(Direction direction, double distance) {
+        double commonFactor = distance * Math.sqrt((Math.pow(direction.A, 2) + Math.pow(direction.B, 2) + Math.pow(direction.C, 2))
+                / Math.pow(direction.A, 2));
+
+        return new Point(commonFactor, commonFactor * direction.B / direction.A, commonFactor * direction.C / direction.A);
+    }
+
+    public Point positionOnScreen(Camera camera) {
+        Edge lightRoute = new Edge(this, Camera.center);
+        return lightRoute.intersectWithPlane(camera.getScreenPlane());
+
+
     }
 
     public static void main(String[] args) {
         System.out.print(new Point(0, 0, 0).distanceBetween(new Point(1, 1, 1)));
     }
-    
+
 }

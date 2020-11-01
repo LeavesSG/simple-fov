@@ -29,7 +29,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Camera">
+  <component name="RunManager" selected="Application.Line">
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -47,6 +47,11 @@
     <configuration name="Edge" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Edge" />
       <module name="simple-fov" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Line" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Line" />
+      <module name="untitled104" />
       <method v="2" />
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -82,12 +87,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Camera" />
       <item itemvalue="Application.Direction" />
       <item itemvalue="Application.Edge" />
       <item itemvalue="Application.Obstacle" />
       <item itemvalue="Application.Point" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Camera" />
+      <item itemvalue="Application.Line" />
     </list>
     <recent_temporary>
       <list>
@@ -100,29 +106,37 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="440" y="243" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.822@0.23.1440.822" timestamp="1603712246380" />
-    <state width="1440" height="228" key="GridCell.Tab.0.bottom" timestamp="1603801101268">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom" timestamp="1604228638527">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1603713071994" />
-    <state width="1440" height="229" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1603717071891" />
-    <state width="1440" height="228" key="GridCell.Tab.0.center" timestamp="1603801101268">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1604228638527" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1604225502883" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1604227043065" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center" timestamp="1604228638525">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1603713071993" />
-    <state width="1440" height="229" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1603717071891" />
-    <state width="1440" height="228" key="GridCell.Tab.0.left" timestamp="1603801101267">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1604228638525" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1604225502882" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1604227043064" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left" timestamp="1604228638524">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1603801101267" />
     <state width="1440" height="229" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1603713071993" />
-    <state width="1440" height="229" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1603717071891" />
-    <state width="1440" height="228" key="GridCell.Tab.0.right" timestamp="1603801101268">
-      <screen x="0" y="23" width="1440" height="821" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1604228638524" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1604225502881" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1604227043063" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right" timestamp="1604228638526">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1603713071994" />
-    <state width="1440" height="229" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1603717071891" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1604228638526" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1604225502882" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1604227043065" />
   </component>
 </project>
