@@ -7,11 +7,12 @@ public class Direction {
         C = z0;
     }
 
-    String Print() {
+    @Override
+    public String toString() {
         return "Vector(" + A + ',' + B + ',' + C + ')';
     }
 
     public static void main(String[] args) {
-        System.out.print(new Direction(1, 1, 1).Print());
+        System.out.print(new Direction(1, 1, 1).toString());
     }
 }

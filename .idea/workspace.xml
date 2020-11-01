@@ -29,7 +29,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Line">
+  <component name="RunManager" selected="Application.Obstacle">
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -41,12 +41,12 @@
     </configuration>
     <configuration name="Direction" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Direction" />
-      <module name="simple-fov" />
+      <module name="untitled104" />
       <method v="2" />
     </configuration>
     <configuration name="Edge" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Edge" />
-      <module name="simple-fov" />
+      <module name="untitled104" />
       <method v="2" />
     </configuration>
     <configuration name="Line" type="Application" factoryName="Application">
@@ -67,6 +67,11 @@
     </configuration>
     <configuration name="Obstacle" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Obstacle" />
+      <module name="untitled104" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Plane" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Plane" />
       <module name="untitled104" />
       <method v="2" />
     </configuration>
@@ -92,8 +97,9 @@
       <item itemvalue="Application.Edge" />
       <item itemvalue="Application.Obstacle" />
       <item itemvalue="Application.Point" />
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Line" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Plane" />
     </list>
     <recent_temporary>
       <list>
@@ -106,37 +112,68 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="440" y="243" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.822@0.23.1440.822" timestamp="1603712246380" />
-    <state width="1440" height="226" key="GridCell.Tab.0.bottom" timestamp="1604228638527">
+    <state x="533" y="144" key="#com.intellij.ide.util.MemberChooser" timestamp="1604247534950">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state x="533" y="144" key="#com.intellij.ide.util.MemberChooser/0.23.1440.825@0.23.1440.825" timestamp="1604247534950" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom" timestamp="1604254752536">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1603713071994" />
-    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1604228638527" />
-    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1604225502883" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1604254752536" />
+    <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1604250522494" />
     <state width="1440" height="226" key="GridCell.Tab.0.bottom/0.23.1440.826@0.23.1440.826" timestamp="1604227043065" />
-    <state width="1440" height="226" key="GridCell.Tab.0.center" timestamp="1604228638525">
+    <state width="1440" height="226" key="GridCell.Tab.0.center" timestamp="1604254752534">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1603713071993" />
-    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1604228638525" />
-    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1604225502882" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1604254752534" />
+    <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1604250522493" />
     <state width="1440" height="226" key="GridCell.Tab.0.center/0.23.1440.826@0.23.1440.826" timestamp="1604227043064" />
-    <state width="1440" height="226" key="GridCell.Tab.0.left" timestamp="1604228638524">
+    <state width="1440" height="226" key="GridCell.Tab.0.left" timestamp="1604254752534">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1603801101267" />
     <state width="1440" height="229" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1603713071993" />
-    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1604228638524" />
-    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1604225502881" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1604254752534" />
+    <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1604250522492" />
     <state width="1440" height="226" key="GridCell.Tab.0.left/0.23.1440.826@0.23.1440.826" timestamp="1604227043063" />
-    <state width="1440" height="226" key="GridCell.Tab.0.right" timestamp="1604228638526">
+    <state width="1440" height="226" key="GridCell.Tab.0.right" timestamp="1604254752535">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state width="1440" height="228" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1603801101268" />
     <state width="1440" height="229" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1603713071994" />
-    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1604228638526" />
-    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1604225502882" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1604254752535" />
+    <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1604250522493" />
     <state width="1440" height="226" key="GridCell.Tab.0.right/0.23.1440.826@0.23.1440.826" timestamp="1604227043065" />
+    <state width="1440" height="281" key="GridCell.Tab.1.bottom" timestamp="1604253916112">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1440" height="281" key="GridCell.Tab.1.bottom/0.23.1440.823@0.23.1440.823" timestamp="1604253916112" />
+    <state width="1440" height="281" key="GridCell.Tab.1.center" timestamp="1604253916111">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1440" height="281" key="GridCell.Tab.1.center/0.23.1440.823@0.23.1440.823" timestamp="1604253916111" />
+    <state width="1440" height="281" key="GridCell.Tab.1.left" timestamp="1604253916111">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1440" height="281" key="GridCell.Tab.1.left/0.23.1440.823@0.23.1440.823" timestamp="1604253916111" />
+    <state width="1440" height="281" key="GridCell.Tab.1.right" timestamp="1604253916112">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state width="1440" height="281" key="GridCell.Tab.1.right/0.23.1440.823@0.23.1440.823" timestamp="1604253916112" />
+    <state x="281" y="167" width="878" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1604253805556">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="281" y="167" width="878" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1440.823@0.23.1440.823" timestamp="1604253805556" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

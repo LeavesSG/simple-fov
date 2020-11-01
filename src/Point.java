@@ -11,9 +11,6 @@ public class Point {
         return Math.sqrt(Math.pow(x - point2.x, 2) + Math.pow(y - point2.y, 2) + Math.pow(z - point2.z, 2));
     }
 
-    String Print() {
-        return "Point(" + x + ',' + y + ',' + z + ')';
-    }
 
     boolean isSame(Point point2) {
         return x == point2.x && y == point2.y && z == point2.z;
@@ -24,10 +21,10 @@ public class Point {
     }
 
     public Point moveTo(Direction direction, double distance) {
-        double commonFactor = distance * Math.sqrt((Math.pow(direction.A, 2) + Math.pow(direction.B, 2) + Math.pow(direction.C, 2))
-                / Math.pow(direction.A, 2));
+        double commonFactor = distance * Math.sqrt(
+                Math.pow(direction.A, 2) + Math.pow(direction.B, 2) + Math.pow(direction.C, 2));
 
-        return new Point(commonFactor, commonFactor * direction.B / direction.A, commonFactor * direction.C / direction.A);
+        return new Point(x + commonFactor * direction.A, y + commonFactor * direction.B, z + commonFactor * direction.C);
     }
 
     public Point positionOnScreen(Camera camera) {
@@ -35,6 +32,11 @@ public class Point {
         return lightRoute.intersectWithPlane(camera.getScreenPlane());
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Point(" + x + ',' + y + ',' + z + ')';
     }
 
     public static void main(String[] args) {

@@ -7,7 +7,7 @@ public class Line {
         dirVector = DirVector;
     }
 
-    Point intersectWithPlane(Plane plane) {
+    public Point intersectWithPlane(Plane plane) {
         double A, B, C, D, E, F, m, n, p, x, y, z, identifier;
 
         Point p0 = plane.point;
@@ -46,11 +46,23 @@ public class Line {
 
     }
 
+    public boolean pointOn(Point otherPoint) {
+        if (otherPoint == null) {
+            return false;
+        }
+        Direction otherDirVector =
+                new Direction(point.x - otherPoint.x, point.y - otherPoint.y, point.z - otherPoint.z);
+        return (dirVector.A * otherDirVector.B == dirVector.B * otherDirVector.A
+                && dirVector.B * otherDirVector.C == dirVector.C * otherDirVector.B
+                && dirVector.A * otherDirVector.C == dirVector.C * otherDirVector.A);
+    }
+
     public static void main(String[] Args) {
         Line line = new Line(new Point(0, 0, 5), new Direction(0, 0, -1));
         Plane plane = new Plane(new Point(0, 0, 0), new Direction(0, 0, 4));
         Point result = line.intersectWithPlane(plane);
-        System.out.print(result.Print());
+        System.out.print(result.toString());
+        System.out.print(line.pointOn(new Point(4, 0, 1)));
     }
 
 

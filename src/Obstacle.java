@@ -4,12 +4,10 @@ public class Obstacle {
     public Surface[] surfaces;
     public Edge[] edges = {};
     public Point[] points = {};
-    public Point[] positions;
 
     Obstacle(Surface[] surfaceList) {
         surfaces = surfaceList;
-        System.out.print(Arrays.toString(points));
-
+        points = getPoints();
     }
 
     private void singlePushCheck(Point item, Point[] list) {
@@ -46,8 +44,10 @@ public class Obstacle {
         return points;
     }
 
-    public Point[] rendorOnScreen(Camera camera) {
+    public Point[] renderOnScreen(Camera camera) {
+        Point positions[] = new Point[points.length];
         for (int i = 0; i < points.length; i++) {
+
             positions[i] = points[i].positionOnScreen(camera);
         }
         return positions;
@@ -57,8 +57,8 @@ public class Obstacle {
         Surface s1 = new Surface(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
         Surface[] surfaces = {s1};
         Obstacle o1 = new Obstacle(surfaces);
-        System.out.print(Arrays.toString(o1.getPoints()));
-
+        Camera c1 = new Camera(new Point(0, 0, 10), 0.5, new Direction(0, 0, -1));
+        System.out.println(Arrays.toString(o1.renderOnScreen(c1)));
     }
 
 

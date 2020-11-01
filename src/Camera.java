@@ -27,9 +27,14 @@ public class Camera {
 //        return new Line(center, direction);
 //    }
 
+    @Override
+    public String toString() {
+        return "Camera( " + getScreenCenter().toString() + ", " + getScreenPlane().toString() + " )";
+    }
+
     public static void main(String[] args) {
-        Camera c0 = new Camera(new Point(0, 0, 0), 2.0, new Direction(1, 1, 0));
-        System.out.print(c0.getScreenCenter().Print());
+        Camera c0 = new Camera(new Point(0, 0, 5), 0.5, new Direction(0, 0, -1));
+        System.out.print(c0.getScreenPlane().toString());
 
     }
 }
