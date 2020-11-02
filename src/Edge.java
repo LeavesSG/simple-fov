@@ -51,6 +51,10 @@ public class Edge extends Line {
 
     }
 
+    @Override
+    public String toString() {
+        return "Edge( " + point1.toString() + ", " + point2.toString() + " )";
+    }
 
     public static void main(String[] args) {
 //        Point point1 = new Point(0, 0, 0);
