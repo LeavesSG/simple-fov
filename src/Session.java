@@ -58,7 +58,7 @@ public class Session {
 
     public static void main(String[] args) throws InterruptedException {
         Color[] colors = {StdDraw.BLACK, StdDraw.BLUE, StdDraw.RED, StdDraw.GREEN, StdDraw.YELLOW, StdDraw.ORANGE, StdDraw.BLACK, StdDraw.BOOK_LIGHT_BLUE};
-        Session.setupCamera(new Point(10, 0, 0), 0.2, new Direction(-10, 0, 0));
+        Session.setupCamera(new Point(10, 0, 0), 0.5, new Direction(-10, 0, 0));
         System.out.println(Session.camera.toString());
         Point[] p1 = {new Point(1, 1, 1), new Point(1, 0, 0), new Point(2, 1, 0), new Point(1, 2, 0),
                 new Point(0, 1, 0), new Point(1, 1, -1)};

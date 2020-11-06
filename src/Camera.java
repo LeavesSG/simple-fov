@@ -8,8 +8,8 @@ public class Camera {
         center = center0;
         distance = distance0;
         direction = direction0;
-        width = 0.1366;
-        height = 0.0768;
+        width = 0.1920;
+        height = 0.1080;
     }
 
     public Point getScreenCenter() {
@@ -21,23 +21,23 @@ public class Camera {
     }
 
     public Line getScreenTop() {
-        double C = direction.C == 0 ? 0 : (Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / direction.C;
+        double C = direction.C == 0 ? 0 : -(Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / direction.C;
 //        System.out.println("getscreen!!!!!" + new Direction(direction.A, direction.B, C).toString());
         return new Line(getScreenCenter().moveTo(new Direction(direction.A, direction.B,
                 C), height / 2),
-                new Direction(direction.B, direction.A, 0));
+                new Direction(-direction.B, direction.A, 0));
     }
 
     public Line getScreenLeft() {
-        double C = direction.C == 0 ? 0 : (Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / direction.C;
-        return new Line(getScreenCenter().moveTo(new Direction(direction.B, direction.A, 0), width / 2),
+        double C = direction.C == 0 ? 0 : (Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / -direction.C;
+        return new Line(getScreenCenter().moveTo(new Direction(-direction.B, direction.A, 0), width / 2),
                 new Direction(direction.A, direction.B,
                         C));
     }
 
     public Point positionOnScreen(Point otherPoint) {
 //        System.out.println("camera" + getScreenLeft().toString() + ", " + getScreenTop().toString());
-        return new Point(otherPoint.distanceToLine(getScreenLeft()) * 1000 / 1920, otherPoint.distanceToLine(getScreenTop()) * 1000 / 1080, 0);
+        return new Point(otherPoint.distanceToLine(getScreenLeft()), otherPoint.distanceToLine(getScreenTop()), 0);
     }
 
     @Override

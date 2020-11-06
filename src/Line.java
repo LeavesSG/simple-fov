@@ -11,41 +11,44 @@ public class Line {
         double A, B, C, D, E, F, m, n, p, x, y, z, identifier;
 
         Point p0 = plane.point;
+        Point p1 = point;
         A = plane.normalVector.A;
         B = plane.normalVector.B;
         C = plane.normalVector.C;
         m = dirVector.A;
         n = dirVector.B;
         p = dirVector.C;
-        D = (A * p0.x + B * p0.y + C * p0.z);
-        E = (p * point.y - n * point.z);
-        F = (p * point.x - m * point.z);
+        double t;
         identifier = A * m + B * n + C * p;
         if (identifier == 0) {
             System.out.println("identifier is 0");
             return null;
-        }
-        double[] doubles = {A, B, C, D, E, F, m, n, p};
-//        System.out.println(plane.point.Print());
-//        System.out.println(point.Print());
-//        System.out.println(Arrays.toString(doubles));
-        z = -(A * F - p * D + B * E) / (identifier);
-        if (p != 0) {
-            System.out.println("1st");
-            y = (E + n * z) / p;
-            x = (F + m * z) / p;
         } else {
-            System.out.println("2st");
-            E = (m * point.z - p * point.x);
-            F = (m * point.y - n * point.x);
-            x = -(B * F - m * D + C * E) / (identifier);
-            E = (n * point.x - m * point.y);
-            F = (n * point.z - p * point.y);
-            y = -(C * F - n * D + B * E) / (identifier);
-
+            t = (A * (p0.x - p1.x) + B * (p0.y - p1.y) + C * (p0.z - p1.z)) / (identifier);
+            x = p1.x + m * t;
+            y = p1.y + n * t;
+            z = p1.z + p * t;
+            return new Point(x, y, z);
         }
-
-        return new Point(x, y, z);
+//        D = (A * p0.x + B * p0.y + C * p0.z);
+//        E = (p * point.y - n * point.z);
+//        F = (p * point.x - m * point.z);
+//
+//        z = -(A * F - p * D + B * E) / (identifier);
+//        if (p != 0) {
+//            System.out.println("1st");
+//            y = (E + n * z) / p;
+//            x = (F + m * z) / p;
+//        } else {
+//            System.out.println("2st");
+//            E = (m * point.z - p * point.x);
+//            F = (m * point.y - n * point.x);
+//            x = -(B * F - m * D + C * E) / (identifier);
+//            E = (n * point.x - m * point.y);
+//            F = (n * point.z - p * point.y);
+//            y = -(C * F - n * D + B * E) / (identifier);
+//
+//        }
 
     }
 
@@ -76,16 +79,20 @@ public class Line {
     }
 
     public static void main(String[] Args) {
-        Edge edge = new Edge(new Point(1, 1, 3), new Point(0, 1, 10));
+        Edge edge = new Edge(new Point(1, 1, 3), new Point(10, 1, 0));
+        Edge edge2 = new Edge(new Point(1, 1, 1), new Point(10, 1, 0));
         Line line = new Line(new Point(1, 1, 3), new Direction(10, -1, -1));
         Plane plane = new Plane(new Point(9.9, 0, 0), new Direction(-10, 0, 0));
-        Point result = line.intersectWithPlane(plane);
+        Point result = edge.intersectWithPlane(plane);
+        Point result2 = edge2.intersectWithPlane(plane);
         System.out.println(result.toString());
-        Camera c1 = new Camera(new Point(10, 0, 0), 0.05, new Direction(-10, 0, 0));
+        System.out.println(result2.toString());
+        Camera c1 = new Camera(new Point(10, 0, 0), 0.03, new Direction(-10, 0, 0));
         System.out.println(c1.toString());
         System.out.println(c1.getScreenTop());
         System.out.println(c1.getScreenLeft());
         System.out.println(c1.positionOnScreen(result));
+        System.out.println(c1.positionOnScreen(result2));
 
     }
 
