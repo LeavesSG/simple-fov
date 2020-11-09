@@ -31,11 +31,20 @@ public class Point {
         return Math.sqrt(Math.pow(x - xc, 2) + Math.pow(y - yc, 2) + Math.pow(z - zc, 2));
     }
 
-    public Point moveTo(Direction direction, double distance) {
+    public Point getNewPos(Direction direction, double distance) {
         double commonFactor = distance / Math.sqrt(
                 Math.pow(direction.A, 2) + Math.pow(direction.B, 2) + Math.pow(direction.C, 2));
 
         return new Point(x + commonFactor * direction.A, y + commonFactor * direction.B, z + commonFactor * direction.C);
+    }
+
+    public void moveTo(Direction direction, double distance) {
+        double commonFactor = distance / Math.sqrt(
+                Math.pow(direction.A, 2) + Math.pow(direction.B, 2) + Math.pow(direction.C, 2));
+
+        x = x + commonFactor * direction.A;
+        y = y + commonFactor * direction.B;
+        z = z + commonFactor * direction.C;
     }
 
     public Point positionOnScreen(Camera camera) {
@@ -54,7 +63,7 @@ public class Point {
 //        System.out.print(new Point(0, 0, 0).distanceBetween(new Point(1, 1, 1)));
         Point p1 = new Point(1, 1, 1);
         Line l1 = new Line(new Point(0, 0, 0), new Direction(0, 0, 1));
-        System.out.println(p1.moveTo(new Direction(3, 4, 12), 13));
+        System.out.println(p1.getNewPos(new Direction(3, 4, 12), 13));
     }
 
 }

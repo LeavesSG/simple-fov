@@ -11,6 +11,13 @@ public class Surface extends Plane {
 
     }
 
+    public void moveTo(Direction direction, double distance) {
+        point1.moveTo(direction, distance);
+        point1.moveTo(direction, distance);
+        point1.moveTo(direction, distance);
+        point1.moveTo(direction, distance);
+    }
+
     Point[] getPoints() {
         return new Point[]{point1, point2, point3, point4};
     }

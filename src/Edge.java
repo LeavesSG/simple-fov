@@ -18,6 +18,11 @@ public class Edge extends Line {
         return new Point((point2.x + point1.x) / 2, (point2.y + point1.y) / 2, (point2.z + point1.z) / 2);
     }
 
+    public void moveTo(Direction direction, double distance) {
+        point1.moveTo(direction, distance);
+        point2.moveTo(direction, distance);
+    }
+
 
     @Override
     public boolean pointOn(Point otherPoint) {

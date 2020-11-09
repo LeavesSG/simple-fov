@@ -7,6 +7,10 @@ public class Plane {
         normalVector = NormalVector;
     }
 
+    public void moveTo(Direction direction, double distance) {
+        point.moveTo(direction, distance);
+    }
+
     @Override
     public String toString() {
         return "Plane( " + point.toString() + ", " + normalVector.toString() + ')';

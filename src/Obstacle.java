@@ -64,7 +64,6 @@ public class Obstacle {
 //            System.out.println("OBS" + camera.positionOnScreen(edges[i].point2.positionOnScreen(camera)));
             linesOnScreen[i] = new Edge(camera.positionOnScreen(edges[i].point1.positionOnScreen(camera)), camera.positionOnScreen(edges[i].point2.positionOnScreen(camera)));
         }
-        System.out.println(Arrays.toString(linesOnScreen));
         return linesOnScreen;
     }
 

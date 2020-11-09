@@ -72,6 +72,10 @@ public class Line {
         } else return a / b < 1.01 && a / b > 0.99;
     }
 
+    public void moveTo(Direction direction, double distance) {
+        point.moveTo(direction, distance);
+    }
+
 
     @Override
     public String toString() {
