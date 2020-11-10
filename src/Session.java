@@ -7,6 +7,8 @@ import java.util.Arrays;
 public class Session {
     public static Obstacle[] obstacles = {};
     public static Camera camera;
+    public static Edge[] currentframe = {};
+    public static Edge[] lastframe = {};
 
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
@@ -22,10 +24,11 @@ public class Session {
     }
 
     public static void loop() throws InterruptedException {
-
+        StdDraw.clear();
         updateScreen();
+        StdDraw.show();
         camera.moveTo(new Direction(2, 10, 2), 0.1);
-        Thread.sleep(10);
+        StdDraw.pause(20);
 
     }
 
@@ -38,17 +41,19 @@ public class Session {
     }
 
     public static void initCanvas() {
-        StdDraw.setPenRadius(0.01);
+        StdDraw.setPenRadius(0.0025);
         StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.enableDoubleBuffering();
 
     }
 
     public static void updateScreen() {
-        StdDraw.clear();
         for (Obstacle obs : obstacles) {
             Edge[] edges = obs.renderEdgesOnScreen(camera);
+            lastframe = currentframe;
+            currentframe = edges;
 
-            drawEdges(edges);
+            drawEdges(currentframe);
         }
     }
 
@@ -69,14 +74,19 @@ public class Session {
                 new Edge(new Point(1, 1, -4), new Point(1, -3, 0)), new Edge(new Point(1, 1, -4), new Point(5, 1, 0)),
                 new Edge(new Point(1, 1, -4), new Point(1, 5, 0)), new Edge(new Point(1, 1, -4), new Point(-3, 1, 0)),
                 new Edge(new Point(1, -3, 0), new Point(5, 1, 0)), new Edge(new Point(1, 5, 0), new Point(-3, 1, 0)),
-                new Edge(new Point(1, -3, 0), new Point(-3, 1, 0)), new Edge(new Point(5, 1, 0), new Point(1, 5, 0)),};
+                new Edge(new Point(1, -3, 0), new Point(-3, 1, 0)), new Edge(new Point(5, 1, 0), new Point(1, 5, 0)),
+        };
         Obstacle o1 = new Obstacle(e1);
+        Obstacle axices = new Obstacle(new Edge[]{new Edge(new Point(0, 0, 0), new Point(10, 0, 0)),
+                new Edge(new Point(0, 0, 0), new Point(0, 10, 0)), new Edge(new Point(0, 0, 0), new Point(0, 0, 10))});
         Session.addObstacle(o1);
-
-        for (int i = 0; i < 1000; i++) {
+        Session.addObstacle(axices);
+        int i = 0;
+        do {
+            i++;
             Session.loop();
             System.out.println(i);
-        }
+        } while (i < 10000);
 
     }
 
