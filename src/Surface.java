@@ -21,4 +21,8 @@ public class Surface extends Plane {
     Point[] getPoints() {
         return new Point[]{point1, point2, point3, point4};
     }
+
+    Edge[] getEdges() {
+        return new Edge[]{new Edge(point1, point2), new Edge(point2, point3), new Edge(point3, point4), new Edge(point4, point1)};
+    }
 }

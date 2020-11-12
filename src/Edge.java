@@ -56,20 +56,24 @@ public class Edge extends Line {
 
     }
 
+    public Boolean isSame(Edge otherEdge) {
+        return (point1.isSame(otherEdge.point1) && point2.isSame(otherEdge.point2)) || ((point1.isSame(otherEdge.point2) && point2.isSame(otherEdge.point1)));
+    }
+
     @Override
     public String toString() {
         return "Edge( " + point1.toString() + ", " + point2.toString() + " )";
     }
 
     public static void main(String[] args) {
-//        Point point1 = new Point(0, 0, 0);
-//        Point point2 = new Point(1, 1, 1);
-//        System.out.print(new Edge(point1, point2).getDirVector().Print());
-//        System.out.print(new Edge(point1, point2).getMiddlePoint().Print());
-        Edge line = new Edge(new Point(0, 0, 5), new Point(0, 0, -1));
-        Plane plane = new Plane(new Point(0, 0, 0), new Direction(0, 0, 4));
-        Point result = line.intersectWithPlane(plane);
-        System.out.print(result.toString());
+////        Point point1 = new Point(0, 0, 0);
+////        Point point2 = new Point(1, 1, 1);
+////        System.out.print(new Edge(point1, point2).getDirVector().Print());
+////        System.out.print(new Edge(point1, point2).getMiddlePoint().Print());
+//        Edge line = new Edge(new Point(0, 0, 5), new Point(0, 0, -1));
+//        Plane plane = new Plane(new Point(0, 0, 0), new Direction(0, 0, 4));
+//        Point result = line.intersectWithPlane(plane);
+//        System.out.print(result.toString());
 
     }
 

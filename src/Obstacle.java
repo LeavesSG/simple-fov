@@ -1,18 +1,27 @@
+import java.awt.*;
 import java.util.Arrays;
 
 public class Obstacle {
     public Surface[] surfaces;
     public Edge[] edges = {};
     public Point[] points = {};
+    public Color color;
+    public double edgeWidth;
 
-    Obstacle(Surface[] surfaceList) {
+    Obstacle(Color Color) {
+        color = Color;
+    }
+
+    void defineSurfaces(Surface[] surfaceList) {
         surfaces = surfaceList;
         points = getPoints();
+        edges = getEdges();
     }
 
-    Obstacle(Edge[] edgeList) {
+    void defineEdges(Edge[] edgeList) {
         edges = edgeList;
     }
+
 
     private void singlePushCheck(Point item, Point[] list) {
         int N = list.length;
@@ -35,9 +44,36 @@ public class Obstacle {
         }
     }
 
+    private void singlePushCheck(Edge item, Edge[] list) {
+        int N = list.length;
+        if (N == 0) {
+            Edge[] newList = Arrays.copyOf(list, N + 1);
+            newList[N] = item;
+            edges = newList;
+        } else {
+            boolean inList = false;
+            for (Edge t : list) {
+                if (item.isSame(t)) {
+                    inList = true;
+                    break;
+                }
+            }
+            if (!inList) {
+                edges = Arrays.copyOf(list, N + 1);
+                edges[N] = item;
+            }
+        }
+    }
+
     public void pushItems(Point[] itemList) {
         for (Point point : itemList) {
             singlePushCheck(point, points);
+        }
+    }
+
+    public void pushItems(Edge[] itemList) {
+        for (Edge edge : itemList) {
+            singlePushCheck(edge, edges);
         }
     }
 
@@ -46,6 +82,13 @@ public class Obstacle {
             pushItems(s0.getPoints());
         }
         return points;
+    }
+
+    public Edge[] getEdges() {
+        for (Surface s0 : surfaces) {
+            pushItems(s0.getEdges());
+        }
+        return edges;
     }
 
     public Point[] renderOnScreen(Camera camera) {

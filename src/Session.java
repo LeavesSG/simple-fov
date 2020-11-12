@@ -41,7 +41,7 @@ public class Session {
     }
 
     public static void initCanvas() {
-        StdDraw.setPenRadius(0.0025);
+        StdDraw.setPenRadius(0.005);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.enableDoubleBuffering();
 
@@ -52,6 +52,7 @@ public class Session {
             Edge[] edges = obs.renderEdgesOnScreen(camera);
             lastframe = currentframe;
             currentframe = edges;
+            StdDraw.setPenColor(obs.color);
 
             drawEdges(currentframe);
         }
@@ -64,8 +65,8 @@ public class Session {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Color[] colors = {StdDraw.BLACK, StdDraw.BLUE, StdDraw.RED, StdDraw.GREEN, StdDraw.YELLOW, StdDraw.ORANGE, StdDraw.BLACK, StdDraw.BOOK_LIGHT_BLUE};
-        Session.setupCamera(new Point(12, -5, 0), 0.5, new Direction(-9, 0, -0.5));
+        Color[] colors = {StdDraw.BLACK, StdDraw.BLUE, StdDraw.RED, StdDraw.GREEN, StdDraw.YELLOW, StdDraw.ORANGE, StdDraw.PINK, StdDraw.BOOK_LIGHT_BLUE};
+        Session.setupCamera(new Point(12, -20, 0), 0.5, new Direction(-9, 0, -0.5));
         System.out.println(Session.camera.toString());
         Point[] p1 = {new Point(1, 1, 1), new Point(1, 0, 0), new Point(2, 1, 0), new Point(1, 2, 0),
                 new Point(0, 1, 0), new Point(1, 1, -1)};
@@ -76,11 +77,22 @@ public class Session {
                 new Edge(new Point(1, -3, 0), new Point(5, 1, 0)), new Edge(new Point(1, 5, 0), new Point(-3, 1, 0)),
                 new Edge(new Point(1, -3, 0), new Point(-3, 1, 0)), new Edge(new Point(5, 1, 0), new Point(1, 5, 0)),
         };
-        Obstacle o1 = new Obstacle(e1);
-        Obstacle axices = new Obstacle(new Edge[]{new Edge(new Point(0, 0, 0), new Point(10, 0, 0)),
+        Obstacle o1 = new Obstacle(StdDraw.BLUE);
+        o1.defineEdges(e1);
+        Obstacle axes = new Obstacle(StdDraw.BLACK);
+        axes.defineEdges(new Edge[]{new Edge(new Point(0, 0, 0), new Point(10, 0, 0)),
                 new Edge(new Point(0, 0, 0), new Point(0, 10, 0)), new Edge(new Point(0, 0, 0), new Point(0, 0, 10))});
-        Session.addObstacle(o1);
-        Session.addObstacle(axices);
+//        Session.addObstacle(o1);
+        Session.addObstacle(axes);
+        Point center = new Point(0, -20, 0);
+        while (center.y < 20) {
+            int length = Math.random() > 0.5 ? 1 : 2;
+            double width = Math.floor(Math.random() * 4) + 1;
+            double height = Math.floor(Math.random() * 10) + 1;
+            Color color = colors[(int) Math.floor(Math.random() * 8)];
+            Session.addObstacle(new Cuboid(new Point(center.x - width / 2, center.y, center.z + height / 2), width, length, height, color));
+            center.y += length + 2;
+        }
         int i = 0;
         do {
             i++;
