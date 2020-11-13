@@ -1,9 +1,16 @@
+// Project simple-fov by Natsuha_SG;
+// Github: https://github.com/LeavesSG/simple-fov;
+// This the the class that define the "Camera", which is point of this "one point perspective".
+
 public class Camera {
     static Point center;
     static Double distance;
     static Direction direction;
     double width, height;
 
+    // Point center0: the center of the camera;
+    // Double distance0: the distance between the perspective center and the screen.
+    // Direction direction0: the direction which the camera is facing. Probably better if using matrix.
     Camera(Point center0, Double distance0, Direction direction0) {
         center = center0;
         distance = distance0;
@@ -12,22 +19,25 @@ public class Camera {
         height = 0.1080;
     }
 
+    // Get the center point of the Screen surface.
     public Point getScreenCenter() {
         return center.getNewPos(direction, distance);
     }
 
+    // Get the Plane object of Screen.
     public Plane getScreenPlane() {
         return new Plane(getScreenCenter(), direction);
     }
 
+    // Get the Line object of top edge of the screen.(might not be used)
     public Line getScreenTop() {
         double C = direction.C == 0 ? 0 : -(Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / direction.C;
-//        System.out.println("getscreen!!!!!" + new Direction(direction.A, direction.B, C).toString());
         return new Line(getScreenCenter().getNewPos(new Direction(direction.A, direction.B,
                 C), height / 2),
                 new Direction(-direction.B, direction.A, 0));
     }
 
+    // Get the Line object of the left edge of the screen.(might not be used)
     public Line getScreenLeft() {
         double C = direction.C == 0 ? 0 : (Math.pow(direction.A, 2) + Math.pow(direction.B, 2)) / -direction.C;
         return new Line(getScreenCenter().getNewPos(new Direction(-direction.B, direction.A, 0), width / 2),
@@ -35,10 +45,12 @@ public class Camera {
                         C));
     }
 
+    // Instantly move the camera center towards a certain direction by a certain distance.
     public void moveTo(Direction direction, double distance) {
         center.moveTo(direction, distance);
     }
 
+    // Return the Transforming Matrix from Normal axes to the camera axes.
     public double[][] getTransformMatrix() {
         double A = direction.A;
         double A2 = Math.pow(A, 2);
@@ -55,9 +67,8 @@ public class Camera {
         return new double[][]{matrix1, matrix2, matrix3};
     }
 
+    // Calculate a projection of other point on the Screen.
     public Point positionOnScreen(Point otherPoint) {
-////        System.out.println("camera" + getScreenLeft().toString() + ", " + getScreenTop().toString());
-//        return new Point(otherPoint.distanceToLine(getScreenLeft()), otherPoint.distanceToLine(getScreenTop()), 0);
         double[][] matrix = getTransformMatrix();
         double x0 = otherPoint.x - getScreenCenter().x;
         double y0 = otherPoint.y - getScreenCenter().y;

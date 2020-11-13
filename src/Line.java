@@ -1,12 +1,19 @@
+// Project simple-fov by Natsuha_SG;
+// Github: https://github.com/LeavesSG/simple-fov;
+// This is the class that define a line
+
 public class Line {
     public Point point;
     public Direction dirVector;
 
+    // Point Point: some point on the line;
+    // Direction DirVector: direction vector of the line;
     Line(Point Point, Direction DirVector) {
         point = Point;
         dirVector = DirVector;
     }
 
+    // Return the Point intersection of this line and a plane.
     public Point intersectWithPlane(Plane plane) {
         double A, B, C, D, E, F, m, n, p, x, y, z, identifier;
 
@@ -30,48 +37,30 @@ public class Line {
             z = p1.z + p * t;
             return new Point(x, y, z);
         }
-//        D = (A * p0.x + B * p0.y + C * p0.z);
-//        E = (p * point.y - n * point.z);
-//        F = (p * point.x - m * point.z);
-//
-//        z = -(A * F - p * D + B * E) / (identifier);
-//        if (p != 0) {
-//            System.out.println("1st");
-//            y = (E + n * z) / p;
-//            x = (F + m * z) / p;
-//        } else {
-//            System.out.println("2st");
-//            E = (m * point.z - p * point.x);
-//            F = (m * point.y - n * point.x);
-//            x = -(B * F - m * D + C * E) / (identifier);
-//            E = (n * point.x - m * point.y);
-//            F = (n * point.z - p * point.y);
-//            y = -(C * F - n * D + B * E) / (identifier);
-//
-//        }
-
     }
 
+    // Return boolean whether another point is on this line or not.
     public boolean pointOn(Point otherPoint) {
         if (otherPoint == null) {
             return false;
         }
         Direction otherDirVector =
                 new Direction(point.x - otherPoint.x, point.y - otherPoint.y, point.z - otherPoint.z);
-//        System.out.println(otherDirVector.toString() + ",, " + dirVector.toString());
-//        System.out.println(otherPoint.toString());
-//        System.out.println(toString());
+
         return (proxiSame(dirVector.A * otherDirVector.B, dirVector.B * otherDirVector.A)
                 && proxiSame(dirVector.B * otherDirVector.C, dirVector.C * otherDirVector.B)
                 && proxiSame(dirVector.A * otherDirVector.C, dirVector.C * otherDirVector.A));
     }
 
+    // Determine whether two double value is proximately the same(to avoid some mysterious issues).
     public boolean proxiSame(Double a, Double b) {
         if (a <= 0.01 && b <= 0.01) {
             return true;
         } else return a / b < 1.01 && a / b > 0.99;
     }
 
+    // Move the line towards some direction by some distance.
+    // Caution: it will do nothing if the direction is the same with the direction vector of this line.
     public void moveTo(Direction direction, double distance) {
         point.moveTo(direction, distance);
     }
@@ -83,20 +72,6 @@ public class Line {
     }
 
     public static void main(String[] Args) {
-        Edge edge = new Edge(new Point(1, 1, 3), new Point(10, 1, 0));
-        Edge edge2 = new Edge(new Point(1, 1, 1), new Point(10, 1, 0));
-        Line line = new Line(new Point(1, 1, 3), new Direction(10, -1, -1));
-        Plane plane = new Plane(new Point(9.9, 0, 0), new Direction(-10, 0, 0));
-        Point result = edge.intersectWithPlane(plane);
-        Point result2 = edge2.intersectWithPlane(plane);
-        System.out.println(result.toString());
-        System.out.println(result2.toString());
-        Camera c1 = new Camera(new Point(10, 0, 0), 0.03, new Direction(-10, 0, 0));
-        System.out.println(c1.toString());
-        System.out.println(c1.getScreenTop());
-        System.out.println(c1.getScreenLeft());
-        System.out.println(c1.positionOnScreen(result));
-        System.out.println(c1.positionOnScreen(result2));
 
     }
 

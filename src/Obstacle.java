@@ -1,25 +1,29 @@
+// Project simple-fov by Natsuha_SG;
+// Github: https://github.com/LeavesSG/simple-fov;
+// This is the class to define an Obstacle
+
 import java.awt.*;
 import java.util.Arrays;
 
 public class Obstacle {
-    public Surface[] surfaces;
-    public Edge[] edges = {};
+    public Face[] Faces;
+    public Segment[] segments = {};
     public Point[] points = {};
     public Color color;
-    public double edgeWidth;
+    public double SegmentWidth;
 
     Obstacle(Color Color) {
         color = Color;
     }
 
-    void defineSurfaces(Surface[] surfaceList) {
-        surfaces = surfaceList;
+    void defineFaces(Face[] FaceList) {
+        Faces = FaceList;
         points = getPoints();
-        edges = getEdges();
+        segments = getSegments();
     }
 
-    void defineEdges(Edge[] edgeList) {
-        edges = edgeList;
+    void defineSegments(Segment[] SegmentList) {
+        segments = SegmentList;
     }
 
 
@@ -44,23 +48,23 @@ public class Obstacle {
         }
     }
 
-    private void singlePushCheck(Edge item, Edge[] list) {
+    private void singlePushCheck(Segment item, Segment[] list) {
         int N = list.length;
         if (N == 0) {
-            Edge[] newList = Arrays.copyOf(list, N + 1);
+            Segment[] newList = Arrays.copyOf(list, N + 1);
             newList[N] = item;
-            edges = newList;
+            segments = newList;
         } else {
             boolean inList = false;
-            for (Edge t : list) {
+            for (Segment t : list) {
                 if (item.isSame(t)) {
                     inList = true;
                     break;
                 }
             }
             if (!inList) {
-                edges = Arrays.copyOf(list, N + 1);
-                edges[N] = item;
+                segments = Arrays.copyOf(list, N + 1);
+                segments[N] = item;
             }
         }
     }
@@ -71,24 +75,24 @@ public class Obstacle {
         }
     }
 
-    public void pushItems(Edge[] itemList) {
-        for (Edge edge : itemList) {
-            singlePushCheck(edge, edges);
+    public void pushItems(Segment[] itemList) {
+        for (Segment Segment : itemList) {
+            singlePushCheck(Segment, segments);
         }
     }
 
     public Point[] getPoints() {
-        for (Surface s0 : surfaces) {
+        for (Face s0 : Faces) {
             pushItems(s0.getPoints());
         }
         return points;
     }
 
-    public Edge[] getEdges() {
-        for (Surface s0 : surfaces) {
-            pushItems(s0.getEdges());
+    public Segment[] getSegments() {
+        for (Face s0 : Faces) {
+            pushItems(s0.getSegments());
         }
-        return edges;
+        return segments;
     }
 
     public Point[] renderOnScreen(Camera camera) {
@@ -101,20 +105,20 @@ public class Obstacle {
         return positions;
     }
 
-    public Edge[] renderEdgesOnScreen(Camera camera) {
-        Edge[] linesOnScreen = new Edge[edges.length];
-        for (int i = 0; i < edges.length; i++) {
-//            System.out.println("OBS" + camera.positionOnScreen(edges[i].point2.positionOnScreen(camera)));
-            linesOnScreen[i] = new Edge(camera.positionOnScreen(edges[i].point1.positionOnScreen(camera)), camera.positionOnScreen(edges[i].point2.positionOnScreen(camera)));
+    public Segment[] renderSegmentsOnScreen(Camera camera) {
+        Segment[] linesOnScreen = new Segment[segments.length];
+        for (int i = 0; i < segments.length; i++) {
+//            System.out.println("OBS" + camera.positionOnScreen(Segments[i].point2.positionOnScreen(camera)));
+            linesOnScreen[i] = new Segment(camera.positionOnScreen(segments[i].point1.positionOnScreen(camera)), camera.positionOnScreen(segments[i].point2.positionOnScreen(camera)));
         }
         return linesOnScreen;
     }
 
     public static void main(String[] args) {
-//        Surface s1 = new Surface(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
-//        Surface s2 = new Surface(new Point(1, 1, 1), new Point(1, 1, 2), new Point(1, 2, 2), new Point(1, 2, 1));
-//        Surface[] surfaces = {s1, s2};
-//        Obstacle o1 = new Obstacle(surfaces);
+//        Face s1 = new Face(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));
+//        Face s2 = new Face(new Point(1, 1, 1), new Point(1, 1, 2), new Point(1, 2, 2), new Point(1, 2, 1));
+//        Face[] Faces = {s1, s2};
+//        Obstacle o1 = new Obstacle(Faces);
 //        Camera c1 = new Camera(new Point(10, 0, 0), 0.1, new Direction(-1, 0, 0));
 //        System.out.println(Arrays.toString(o1.renderOnScreen(c1)));
 

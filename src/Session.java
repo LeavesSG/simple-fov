@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class Session {
     public static Obstacle[] obstacles = {};
     public static Camera camera;
-    public static Edge[] currentframe = {};
-    public static Edge[] lastframe = {};
+    public static Segment[] currentframe = {};
+    public static Segment[] lastframe = {};
 
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
@@ -49,18 +49,18 @@ public class Session {
 
     public static void updateScreen() {
         for (Obstacle obs : obstacles) {
-            Edge[] edges = obs.renderEdgesOnScreen(camera);
+            Segment[] Segments = obs.renderSegmentsOnScreen(camera);
             lastframe = currentframe;
-            currentframe = edges;
+            currentframe = Segments;
             StdDraw.setPenColor(obs.color);
 
-            drawEdges(currentframe);
+            drawSegments(currentframe);
         }
     }
 
-    public static void drawEdges(Edge[] edges) {
-        for (Edge edge : edges) {
-            StdDraw.line(edge.point1.x, edge.point1.y, edge.point2.x, edge.point2.y);
+    public static void drawSegments(Segment[] Segments) {
+        for (Segment Segment : Segments) {
+            StdDraw.line(Segment.point1.x, Segment.point1.y, Segment.point2.x, Segment.point2.y);
         }
     }
 
@@ -70,18 +70,18 @@ public class Session {
         System.out.println(Session.camera.toString());
         Point[] p1 = {new Point(1, 1, 1), new Point(1, 0, 0), new Point(2, 1, 0), new Point(1, 2, 0),
                 new Point(0, 1, 0), new Point(1, 1, -1)};
-        Edge[] e1 = {new Edge(new Point(1, 1, 4), new Point(1, -3, 0)), new Edge(new Point(1, 1, 4), new Point(5, 1, 0)),
-                new Edge(new Point(1, 1, 4), new Point(1, 5, 0)), new Edge(new Point(1, 1, 4), new Point(-3, 1, 0)),
-                new Edge(new Point(1, 1, -4), new Point(1, -3, 0)), new Edge(new Point(1, 1, -4), new Point(5, 1, 0)),
-                new Edge(new Point(1, 1, -4), new Point(1, 5, 0)), new Edge(new Point(1, 1, -4), new Point(-3, 1, 0)),
-                new Edge(new Point(1, -3, 0), new Point(5, 1, 0)), new Edge(new Point(1, 5, 0), new Point(-3, 1, 0)),
-                new Edge(new Point(1, -3, 0), new Point(-3, 1, 0)), new Edge(new Point(5, 1, 0), new Point(1, 5, 0)),
+        Segment[] e1 = {new Segment(new Point(1, 1, 4), new Point(1, -3, 0)), new Segment(new Point(1, 1, 4), new Point(5, 1, 0)),
+                new Segment(new Point(1, 1, 4), new Point(1, 5, 0)), new Segment(new Point(1, 1, 4), new Point(-3, 1, 0)),
+                new Segment(new Point(1, 1, -4), new Point(1, -3, 0)), new Segment(new Point(1, 1, -4), new Point(5, 1, 0)),
+                new Segment(new Point(1, 1, -4), new Point(1, 5, 0)), new Segment(new Point(1, 1, -4), new Point(-3, 1, 0)),
+                new Segment(new Point(1, -3, 0), new Point(5, 1, 0)), new Segment(new Point(1, 5, 0), new Point(-3, 1, 0)),
+                new Segment(new Point(1, -3, 0), new Point(-3, 1, 0)), new Segment(new Point(5, 1, 0), new Point(1, 5, 0)),
         };
         Obstacle o1 = new Obstacle(StdDraw.BLUE);
-        o1.defineEdges(e1);
+        o1.defineSegments(e1);
         Obstacle axes = new Obstacle(StdDraw.BLACK);
-        axes.defineEdges(new Edge[]{new Edge(new Point(0, 0, 0), new Point(10, 0, 0)),
-                new Edge(new Point(0, 0, 0), new Point(0, 10, 0)), new Edge(new Point(0, 0, 0), new Point(0, 0, 10))});
+        axes.defineSegments(new Segment[]{new Segment(new Point(0, 0, 0), new Point(10, 0, 0)),
+                new Segment(new Point(0, 0, 0), new Point(0, 10, 0)), new Segment(new Point(0, 0, 0), new Point(0, 0, 10))});
 //        Session.addObstacle(o1);
         Session.addObstacle(axes);
         Point center = new Point(0, -20, 0);

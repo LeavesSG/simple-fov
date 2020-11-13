@@ -1,10 +1,15 @@
-public class Edge extends Line {
+// Project simple-fov by Natsuha_SG;
+// Github: https://github.com/LeavesSG/simple-fov;
+// This is the class to define an Segment
+
+
+public class Segment extends Line {
     Point point1, point2;
     Direction direction;
 
-    Edge(Point point_1, Point point_2) {
+    Segment(Point point_1, Point point_2) {
         super(point_1, new Direction(point_2.x - point_1.x, point_2.y - point_1.y, point_2.z - point_1.z));
-        direction = new Direction(point_2.x - point_1.x, point_2.y - point_1.y, point_2.z - point_1.z);
+//        direction = new Direction(point_2.x - point_1.x, point_2.y - point_1.y, point_2.z - point_1.z);
         point1 = point_1;
         point2 = point_2;
 
@@ -56,21 +61,21 @@ public class Edge extends Line {
 
     }
 
-    public Boolean isSame(Edge otherEdge) {
-        return (point1.isSame(otherEdge.point1) && point2.isSame(otherEdge.point2)) || ((point1.isSame(otherEdge.point2) && point2.isSame(otherEdge.point1)));
+    public Boolean isSame(Segment otherSegment) {
+        return (point1.isSame(otherSegment.point1) && point2.isSame(otherSegment.point2)) || ((point1.isSame(otherSegment.point2) && point2.isSame(otherSegment.point1)));
     }
 
     @Override
     public String toString() {
-        return "Edge( " + point1.toString() + ", " + point2.toString() + " )";
+        return "Segment( " + point1.toString() + ", " + point2.toString() + " )";
     }
 
     public static void main(String[] args) {
 ////        Point point1 = new Point(0, 0, 0);
 ////        Point point2 = new Point(1, 1, 1);
-////        System.out.print(new Edge(point1, point2).getDirVector().Print());
-////        System.out.print(new Edge(point1, point2).getMiddlePoint().Print());
-//        Edge line = new Edge(new Point(0, 0, 5), new Point(0, 0, -1));
+////        System.out.print(new Segment(point1, point2).getDirVector().Print());
+////        System.out.print(new Segment(point1, point2).getMiddlePoint().Print());
+//        Segment line = new Segment(new Point(0, 0, 5), new Point(0, 0, -1));
 //        Plane plane = new Plane(new Point(0, 0, 0), new Direction(0, 0, 4));
 //        Point result = line.intersectWithPlane(plane);
 //        System.out.print(result.toString());
