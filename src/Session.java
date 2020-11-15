@@ -12,6 +12,7 @@ public class Session {
 
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
+        Camera.center.setSpeed(new SpaceVector(0, 0.05, 0));
         initCanvas();
     }
 
@@ -26,9 +27,9 @@ public class Session {
     public static void loop() throws InterruptedException {
         StdDraw.clear();
         updateScreen();
+        Camera.center.newPos();
         StdDraw.show();
-        camera.moveTo(new Direction(2, 10, 2), 0.1);
-        StdDraw.pause(20);
+        StdDraw.pause(10);
 
     }
 
@@ -49,6 +50,7 @@ public class Session {
 
     public static void updateScreen() {
         for (Obstacle obs : obstacles) {
+            obs.newPos();
             Segment[] Segments = obs.renderSegmentsOnScreen(camera);
             lastframe = currentframe;
             currentframe = Segments;
@@ -68,8 +70,7 @@ public class Session {
         Color[] colors = {StdDraw.BLACK, StdDraw.BLUE, StdDraw.RED, StdDraw.GREEN, StdDraw.YELLOW, StdDraw.ORANGE, StdDraw.PINK, StdDraw.BOOK_LIGHT_BLUE};
         Session.setupCamera(new Point(12, -20, 0), 0.5, new Direction(-9, 0, -0.5));
         System.out.println(Session.camera.toString());
-        Point[] p1 = {new Point(1, 1, 1), new Point(1, 0, 0), new Point(2, 1, 0), new Point(1, 2, 0),
-                new Point(0, 1, 0), new Point(1, 1, -1)};
+
         Segment[] e1 = {new Segment(new Point(1, 1, 4), new Point(1, -3, 0)), new Segment(new Point(1, 1, 4), new Point(5, 1, 0)),
                 new Segment(new Point(1, 1, 4), new Point(1, 5, 0)), new Segment(new Point(1, 1, 4), new Point(-3, 1, 0)),
                 new Segment(new Point(1, 1, -4), new Point(1, -3, 0)), new Segment(new Point(1, 1, -4), new Point(5, 1, 0)),
@@ -78,10 +79,10 @@ public class Session {
                 new Segment(new Point(1, -3, 0), new Point(-3, 1, 0)), new Segment(new Point(5, 1, 0), new Point(1, 5, 0)),
         };
         Obstacle o1 = new Obstacle(StdDraw.BLUE);
-        o1.defineSegments(e1);
+        o1.defineSegments(new Point(0, 0, 0), e1);
         Obstacle axes = new Obstacle(StdDraw.BLACK);
-        axes.defineSegments(new Segment[]{new Segment(new Point(0, 0, 0), new Point(10, 0, 0)),
-                new Segment(new Point(0, 0, 0), new Point(0, 10, 0)), new Segment(new Point(0, 0, 0), new Point(0, 0, 10))});
+        axes.defineSegments(new Point(0, 0, 0), new Segment[]{new Segment(new Point(0, 0, 0), new Point(100, 0, 0)),
+                new Segment(new Point(0, 0, 0), new Point(0, 100, 0)), new Segment(new Point(0, 0, 0), new Point(0, 0, 100))});
 //        Session.addObstacle(o1);
         Session.addObstacle(axes);
         Point center = new Point(0, -20, 0);
@@ -97,7 +98,6 @@ public class Session {
         do {
             i++;
             Session.loop();
-            System.out.println(i);
         } while (i < 10000);
 
     }

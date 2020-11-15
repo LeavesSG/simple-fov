@@ -6,23 +6,29 @@ import java.awt.*;
 import java.util.Arrays;
 
 public class Obstacle {
+    public Point center;
     public Face[] Faces;
     public Segment[] segments = {};
     public Point[] points = {};
     public Color color;
     public double SegmentWidth;
+    SpaceVector accelerate = new SpaceVector(0, 0, 0);
+    SpaceVector speed = new SpaceVector(0, 0, 0);
 
     Obstacle(Color Color) {
         color = Color;
     }
 
-    void defineFaces(Face[] FaceList) {
+    // Please use this constructor!
+    void defineFaces(Point center0, Face[] FaceList) {
+        center = center0;
         Faces = FaceList;
         points = getPoints();
         segments = getSegments();
     }
 
-    void defineSegments(Segment[] SegmentList) {
+    void defineSegments(Point center0, Segment[] SegmentList) {
+        center = center0;
         segments = SegmentList;
     }
 
@@ -98,8 +104,7 @@ public class Obstacle {
     public Point[] renderOnScreen(Camera camera) {
         Point[] positions = new Point[points.length];
         for (int i = 0; i < points.length; i++) {
-//            System.out.println(i);
-//            System.out.println(points[i].positionOnScreen(camera));
+
             positions[i] = camera.positionOnScreen(points[i].positionOnScreen(camera));
         }
         return positions;
@@ -108,11 +113,37 @@ public class Obstacle {
     public Segment[] renderSegmentsOnScreen(Camera camera) {
         Segment[] linesOnScreen = new Segment[segments.length];
         for (int i = 0; i < segments.length; i++) {
-//            System.out.println("OBS" + camera.positionOnScreen(Segments[i].point2.positionOnScreen(camera)));
             linesOnScreen[i] = new Segment(camera.positionOnScreen(segments[i].point1.positionOnScreen(camera)), camera.positionOnScreen(segments[i].point2.positionOnScreen(camera)));
+
         }
         return linesOnScreen;
+
+
     }
+
+    // Give the point some accelerate;
+    public void setAccelerate(SpaceVector accelerate0) {
+        accelerate = accelerate0;
+    }
+
+    // Give the point some speed;
+    public void setSpeed(SpaceVector speed0) {
+        speed = speed0;
+    }
+
+    // Calculate the speed of this object in the next frame;
+    public void newSpeed() {
+        speed.add(accelerate);
+    }
+
+    // Calculate the new Position of this object in the next frame;
+    public void newPos() {
+        newSpeed();
+        center.x += speed.x;
+        center.y += speed.y;
+        center.z += speed.z;
+    }
+
 
     public static void main(String[] args) {
 //        Face s1 = new Face(new Point(0, 0, 0), new Point(1, 0, 0), new Point(1, 1, 0), new Point(0, 1, 0));

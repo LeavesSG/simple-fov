@@ -4,6 +4,8 @@
 
 public class Point {
     double x, y, z;
+    SpaceVector accelerate = new SpaceVector(0, 0, 0);
+    SpaceVector speed = new SpaceVector(0, 0, 0);
 
     Point(double x0, double y0, double z0) {
         x = x0;
@@ -62,6 +64,29 @@ public class Point {
 
 
     }
+
+    // Give the point some accelerate;
+    public void setAccelerate(SpaceVector accelerate0) {
+        accelerate = accelerate0;
+    }
+
+    // Give the point some speed;
+    public void setSpeed(SpaceVector speed0) {
+        speed = speed0;
+    }
+
+    // Calculate the speed of this object in the next frame;
+    public void newSpeed() {
+        speed.add(accelerate);
+    }
+
+    // Calculate the new Position of this object in the next frame;
+    public void newPos() {
+        x += speed.x;
+        y += speed.y;
+        z += speed.z;
+    }
+
 
     @Override
     public String toString() {

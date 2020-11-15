@@ -21,7 +21,7 @@ public class Cuboid extends Obstacle {
         super(Color);
         initPoints(Center, Length, Width, Height);
         getFaceList();
-        defineFaces(Faces);
+        defineFaces(center, Faces);
     }
 
     // Initialize the 6 Faces of the cuboid.
@@ -52,6 +52,16 @@ public class Cuboid extends Obstacle {
         botrightbackP = new Point(center.x + length / 2, center.y + width / 2, center.z - height / 2);
         points = new Point[]{topleftfrontP, toprightfrontP, topleftbackP, toprightbackP,
                 botleftfrontP, botrightfrontP, botleftbackP, botrightbackP};
+    }
+
+    @Override
+    public void newPos() {
+        newSpeed();
+        for (Point point : points) {
+            point.x += speed.x;
+            point.y += speed.y;
+            point.z += speed.z;
+        }
     }
 
     public static void main(String[] args) {

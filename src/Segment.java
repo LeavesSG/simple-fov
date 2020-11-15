@@ -56,7 +56,6 @@ public class Segment extends Line {
     }
 
     public Point intersectWithPlane(Plane plane) {
-//        System.out.println(pointOn(super.intersectWithPlane(plane)));
         return pointOn(super.intersectWithPlane(plane)) ? super.intersectWithPlane(plane) : null;
 
     }
