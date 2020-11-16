@@ -113,13 +113,25 @@ public class Obstacle {
     public Segment[] renderSegmentsOnScreen(Camera camera) {
         Segment[] linesOnScreen = new Segment[segments.length];
         for (int i = 0; i < segments.length; i++) {
-            linesOnScreen[i] = new Segment(camera.positionOnScreen(segments[i].point1.positionOnScreen(camera)), camera.positionOnScreen(segments[i].point2.positionOnScreen(camera)));
-
+            if (!segments[i].point1.onSameSideWithP(camera.center, camera.getScreenPlane())
+                    && !segments[i].point2.onSameSideWithP(camera.center, camera.getScreenPlane())) {
+                linesOnScreen[i] = new Segment(camera.positionOnScreen(segments[i].point1.positionOnScreen(camera)),
+                        camera.positionOnScreen(segments[i].point2.positionOnScreen(camera)));
+            } else if (segments[i].point1.onSameSideWithP(camera.center, camera.getScreenPlane())
+                    && segments[i].point2.onSameSideWithP(camera.center, camera.getScreenPlane())) {
+                linesOnScreen[i] = null;
+            } else if (segments[i].point1.onSameSideWithP(camera.center, camera.getScreenPlane())) {
+                linesOnScreen[i] = new Segment(camera.positionOnScreen(new Segment(segments[i].point1, segments[i].point2).intersectWithPlane(camera.getScreenPlane())),
+                        camera.positionOnScreen(segments[i].point2.positionOnScreen(camera)));
+            } else {
+                linesOnScreen[i] = new Segment(camera.positionOnScreen(segments[i].point1.positionOnScreen(camera)),
+                        camera.positionOnScreen(new Segment(segments[i].point1, segments[i].point2).intersectWithPlane(camera.getScreenPlane())));
+            }
         }
         return linesOnScreen;
 
-
     }
+
 
     // Give the point some accelerate;
     public void setAccelerate(SpaceVector accelerate0) {

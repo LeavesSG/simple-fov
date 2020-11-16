@@ -1,11 +1,11 @@
 // Project simple-fov by Natsuha_SG;
 // Github: https://github.com/LeavesSG/simple-fov;
-// This the the class that define the "Camera", which is point of this "one point perspective".
+// This the the class that define the "Camera", which is point of this "one point perspective" system.
 
 public class Camera {
-    static Point center;
-    static Double distance;
-    static Direction direction;
+    Point center;
+    Double distance;
+    Direction direction;
     double width, height;
 
     // Point center0: the center of the camera;

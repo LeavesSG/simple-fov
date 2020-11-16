@@ -23,6 +23,20 @@ public class Point {
         return x == point2.x && y == point2.y && z == point2.z;
     }
 
+    boolean onSameSideWithP(Point otherPoint, Plane plane) {
+        if (isSame(otherPoint)) {
+            return true;
+        } else {
+            return (plane.normalVector.A * (x - plane.point.x)
+                    + plane.normalVector.B * (y - plane.point.y)
+                    + plane.normalVector.C * (z - plane.point.z))
+                    * (plane.normalVector.A * (otherPoint.x - plane.point.x)
+                    + plane.normalVector.B * (otherPoint.y - plane.point.y)
+                    + plane.normalVector.C * (otherPoint.z - plane.point.z)) >= 0;
+        }
+
+    }
+
     // Return the double distance between this point and a line.
     public double distanceToLine(Line line) {
         double m, n, p, x1, y1, z1;
@@ -59,7 +73,7 @@ public class Point {
 
     // Return the intersection of the line from this point to the perspective center and the camera screen.
     public Point positionOnScreen(Camera camera) {
-        Segment lightRoute = new Segment(this, Camera.center);
+        Segment lightRoute = new Segment(this, camera.center);
         return lightRoute.intersectWithPlane(camera.getScreenPlane());
 
 
@@ -96,8 +110,9 @@ public class Point {
     public static void main(String[] args) {
 //        System.out.print(new Point(0, 0, 0).distanceBetween(new Point(1, 1, 1)));
         Point p1 = new Point(1, 1, 1);
-        Line l1 = new Line(new Point(0, 0, 0), new Direction(0, 0, 1));
-        System.out.println(p1.getNewPos(new Direction(3, 4, 12), 13));
+        Point p2 = new Point(2, 3, -4);
+        Plane p0 = new Plane(new Point(0, 0, 0), new Direction(0, 0, 10));
+        System.out.println(p1.onSameSideWithP(p2, p0));
     }
 
 }

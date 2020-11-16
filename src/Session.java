@@ -12,7 +12,7 @@ public class Session {
 
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
-        Camera.center.setSpeed(new SpaceVector(0, 0.05, 0));
+        camera.center.setSpeed(new SpaceVector(0, 0.05, 0));
         initCanvas();
     }
 
@@ -27,7 +27,7 @@ public class Session {
     public static void loop() throws InterruptedException {
         StdDraw.clear();
         updateScreen();
-        Camera.center.newPos();
+        camera.center.newPos();
         StdDraw.show();
         StdDraw.pause(10);
 
@@ -62,13 +62,14 @@ public class Session {
 
     public static void drawSegments(Segment[] Segments) {
         for (Segment Segment : Segments) {
+            if (Segment == null) break;
             StdDraw.line(Segment.point1.x, Segment.point1.y, Segment.point2.x, Segment.point2.y);
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
         Color[] colors = {StdDraw.BLACK, StdDraw.BLUE, StdDraw.RED, StdDraw.GREEN, StdDraw.YELLOW, StdDraw.ORANGE, StdDraw.PINK, StdDraw.BOOK_LIGHT_BLUE};
-        Session.setupCamera(new Point(12, -20, 0), 0.5, new Direction(-9, 0, -0.5));
+        Session.setupCamera(new Point(12, -20, 5), 0.5, new Direction(-9, 0, -0.5));
         System.out.println(Session.camera.toString());
 
         Segment[] e1 = {new Segment(new Point(1, 1, 4), new Point(1, -3, 0)), new Segment(new Point(1, 1, 4), new Point(5, 1, 0)),
