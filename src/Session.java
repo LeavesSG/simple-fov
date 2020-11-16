@@ -10,11 +10,12 @@ public class Session {
     public static Segment[] currentframe = {};
     public static Segment[] lastframe = {};
 
+
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
-        camera.center.setSpeed(new SpaceVector(0, 0.05, 0));
         initCanvas();
     }
+
 
     public static void start() {
 
@@ -24,12 +25,38 @@ public class Session {
 
     }
 
+    public static void cameraControl() {
+        if (!StdDraw.hasNextKeyTyped()) camera.center.setSpeed(new SpaceVector(0, 0, 0));
+        if (StdDraw.hasNextKeyTyped()) {
+            char e = StdDraw.nextKeyTyped();
+            System.out.println(e);
+            switch (e) {
+                case 'w':
+                    camera.center.setSpeed(new SpaceVector(camera.direction.A / 6, camera.direction.B / 6, camera.direction.C / 8));
+                    break;
+                case 's':
+                    camera.center.setSpeed(new SpaceVector(-camera.direction.A / 6, -camera.direction.B / 6, -camera.direction.C / 8));
+                    break;
+                case 'a':
+                    camera.center.setSpeed(new SpaceVector(camera.direction.B / 6, -camera.direction.A / 6, camera.direction.C / 8));
+                    break;
+                case 'd':
+                    camera.center.setSpeed(new SpaceVector(-camera.direction.B / 6, camera.direction.A / 6, camera.direction.C / 8));
+                    break;
+
+
+            }
+        }
+
+    }
+
     public static void loop() throws InterruptedException {
+        cameraControl();
         StdDraw.clear();
         updateScreen();
         camera.center.newPos();
         StdDraw.show();
-        StdDraw.pause(10);
+        StdDraw.pause(5);
 
     }
 
