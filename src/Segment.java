@@ -3,7 +3,7 @@
 // This is the class to define an Segment
 
 
-public class Segment extends Line {
+public final class Segment extends Line {
     Point point1, point2;
     Direction direction;
 

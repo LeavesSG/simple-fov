@@ -56,7 +56,7 @@ public class Session {
         updateScreen();
         camera.center.newPos();
         StdDraw.show();
-        StdDraw.pause(5);
+        StdDraw.pause(16);
 
     }
 
@@ -69,7 +69,7 @@ public class Session {
     }
 
     public static void initCanvas() {
-        StdDraw.setPenRadius(0.005);
+        StdDraw.setPenRadius(0.0025);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.enableDoubleBuffering();
 
@@ -123,6 +123,7 @@ public class Session {
             center.y += length + 2;
         }
         int i = 0;
+        int lastframe = 0;
         do {
             i++;
             Session.loop();

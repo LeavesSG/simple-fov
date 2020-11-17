@@ -1,5 +1,10 @@
 # simple-fov
-simple implementation of fov
+BY Natsuha_SG
+simple implementation of FOV；
+Run “Session.java” to test;
+“WASD” to move Camera position；
+
+
 
 EN 
 <p>A simple application which aimed to implement the field of view. 
@@ -14,3 +19,9 @@ CN
 可能包含的功能：旋转视角，移动视角，移动物体
 
 不太可能包含的功能：用户界面，自定义一个多边形物体，不透明的面（遮挡其后的物体）</p>
+
+
+
+
+17 Nov 2020:
+我不知道这这么几个破Object几个破double有什么难算的，为什么跑起来这么卡？到底是我写的不行还是我这破笔记本不行？

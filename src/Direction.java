@@ -2,7 +2,7 @@
 // Github: https://github.com/LeavesSG/simple-fov;
 // This is a class to define the vector in 3-dim space.
 
-public class Direction {
+public final class Direction {
     double A, B, C, module;
 
     Direction(double x0, double y0, double z0) {

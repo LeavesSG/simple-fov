@@ -1,4 +1,4 @@
-public class SpaceVector {
+public final class SpaceVector {
     public double x, y, z;
 
     SpaceVector(double X, double Y, double Z) {

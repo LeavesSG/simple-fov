@@ -2,7 +2,7 @@
 // Github: https://github.com/LeavesSG/simple-fov;
 // This is the class that define a point in the 3-dim axes.
 
-public class Point {
+public final class Point {
     double x, y, z;
     SpaceVector accelerate = new SpaceVector(0, 0, 0);
     SpaceVector speed = new SpaceVector(0, 0, 0);

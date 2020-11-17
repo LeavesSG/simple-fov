@@ -2,7 +2,7 @@
 // Github: https://github.com/LeavesSG/simple-fov;
 // This the the class that define the "Camera", which is point of this "one point perspective" system.
 
-public class Camera {
+public final class Camera {
     Point center;
     Double distance;
     Direction direction;
@@ -51,7 +51,7 @@ public class Camera {
     }
 
     // Return the Transforming Matrix from Normal axes to the camera axes.
-    public double[][] getTransformMatrix() {
+    private double[][] getTransformMatrix() {
         double A = direction.A;
         double A2 = Math.pow(A, 2);
         double B = direction.B;

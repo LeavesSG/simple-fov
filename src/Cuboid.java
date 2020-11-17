@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.awt.*;
 import java.util.Arrays;
 
-public class Cuboid extends Obstacle {
+public final class Cuboid extends Obstacle {
     Point center;
     Point[] points;
     Face[] Faces;
