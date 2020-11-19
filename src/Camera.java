@@ -24,6 +24,26 @@ public final class Camera {
         return center.getNewPos(direction, distance);
     }
 
+    public void rotateCameraYaw(double a) {
+        double A, B, C;
+        A = direction.A;
+        B = direction.B;
+        C = direction.C;
+//        direction.A = Math.cos(a) * A + Math.sin(a) * B;
+//        direction.B = Math.cos(a) * B - Math.sin(a) * A;
+        direction = new Direction(Math.cos(a) * A + Math.sin(a) * B, Math.cos(a) * B - Math.sin(a) * A, C);
+    }
+
+    public void rotateCameraPitch(double b) {
+        double A, B, C;
+        A = direction.A;
+        B = direction.B;
+        C = direction.C;
+//        direction.A = Math.cos(a) * A + Math.sin(a) * B;
+//        direction.B = Math.cos(a) * B - Math.sin(a) * A;
+        direction = new Direction(Math.cos(b) * A - Math.sin(b) * C, B, Math.cos(b) * C + Math.sin(b) * A);
+    }
+
     // Get the Plane object of Screen.
     public Plane getScreenPlane() {
         return new Plane(getScreenCenter(), direction);

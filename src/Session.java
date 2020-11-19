@@ -13,6 +13,7 @@ public class Session {
 
     public static void setupCamera(Point center, double distance, Direction direction) {
         camera = new Camera(center, distance, direction);
+        camera.center.setSpeed(new SpaceVector(0, 0.005, -0.005));
         initCanvas();
     }
 
@@ -43,6 +44,18 @@ public class Session {
                 case 'd':
                     camera.center.setSpeed(new SpaceVector(-camera.direction.B / 6, camera.direction.A / 6, camera.direction.C / 8));
                     break;
+                case 'j':
+                    camera.rotateCameraYaw(Math.PI / 360);
+                    break;
+                case 'l':
+                    camera.rotateCameraYaw(-(Math.PI / 360));
+                    break;
+                case 'k':
+                    camera.rotateCameraPitch(Math.PI / 360);
+                    break;
+                case 'i':
+                    camera.rotateCameraPitch(-(Math.PI / 360));
+                    break;
 
 
             }
@@ -56,7 +69,7 @@ public class Session {
         updateScreen();
         camera.center.newPos();
         StdDraw.show();
-        StdDraw.pause(16);
+        StdDraw.pause(1);
 
     }
 
@@ -99,19 +112,9 @@ public class Session {
         Session.setupCamera(new Point(12, -20, 5), 0.5, new Direction(-9, 0, -0.5));
         System.out.println(Session.camera.toString());
 
-        Segment[] e1 = {new Segment(new Point(1, 1, 4), new Point(1, -3, 0)), new Segment(new Point(1, 1, 4), new Point(5, 1, 0)),
-                new Segment(new Point(1, 1, 4), new Point(1, 5, 0)), new Segment(new Point(1, 1, 4), new Point(-3, 1, 0)),
-                new Segment(new Point(1, 1, -4), new Point(1, -3, 0)), new Segment(new Point(1, 1, -4), new Point(5, 1, 0)),
-                new Segment(new Point(1, 1, -4), new Point(1, 5, 0)), new Segment(new Point(1, 1, -4), new Point(-3, 1, 0)),
-                new Segment(new Point(1, -3, 0), new Point(5, 1, 0)), new Segment(new Point(1, 5, 0), new Point(-3, 1, 0)),
-                new Segment(new Point(1, -3, 0), new Point(-3, 1, 0)), new Segment(new Point(5, 1, 0), new Point(1, 5, 0)),
-        };
-        Obstacle o1 = new Obstacle(StdDraw.BLUE);
-        o1.defineSegments(new Point(0, 0, 0), e1);
         Obstacle axes = new Obstacle(StdDraw.BLACK);
         axes.defineSegments(new Point(0, 0, 0), new Segment[]{new Segment(new Point(0, 0, 0), new Point(100, 0, 0)),
                 new Segment(new Point(0, 0, 0), new Point(0, 100, 0)), new Segment(new Point(0, 0, 0), new Point(0, 0, 100))});
-//        Session.addObstacle(o1);
         Session.addObstacle(axes);
         Point center = new Point(0, -20, 0);
         while (center.y < 20) {
@@ -123,9 +126,9 @@ public class Session {
             center.y += length + 2;
         }
         int i = 0;
-        int lastframe = 0;
         do {
             i++;
+            if (i % 10 == 0) System.out.println(i);
             Session.loop();
         } while (i < 10000);
 
