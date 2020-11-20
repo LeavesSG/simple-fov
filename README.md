@@ -1,10 +1,11 @@
 # simple-fov
 BY Natsuha_SG
-simple implementation of FOV；
-Run “Session.java” to test;
-“WASD” to move Camera position；\
-"JL" to yaw;
-"IK" to pitch;
+
+<p>simple implementation of FOV；</p>
+<p>Run “Session.java” to test;</p>
+<p>“WASD” to move Camera position；</[>
+<p>"JL" to yaw;</p>
+<p>"IK" to pitch;</p>
 
 
 
