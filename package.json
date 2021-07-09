@@ -1,0 +1,29 @@
+{
+  "name": "simple-fov",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/dict/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeavesSG/simple-fov.git"
+  },
+  "keywords": [
+    "1756300CBne."
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeavesSG/simple-fov/issues"
+  },
+  "homepage": "https://github.com/LeavesSG/simple-fov#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-util": "^3.0.8",
+    "typescript": "^4.3.5",
+    "watchify": "^4.0.0"
+  }
+}
